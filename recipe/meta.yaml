@@ -1,40 +1,46 @@
-{% set version = "4.0.0" %}
+{% set name = "smmap" %}
+{% set version = "5.0.1" %}
 
 package:
-  name: smmap
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/s/smmap/smmap-{{ version }}.tar.gz
-  sha256: 7e65386bd122d45405ddf795637b7f7d2b532e7e401d46bbe3fb49b9986d5182
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/smmap-{{ version }}.tar.gz
+  sha256: dceeb6c0028fdb6734471eb07c0cd2aae706ccaecab45965ee83f11c8d3b1f62
 
 build:
-  number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
 requirements:
   host:
-    - python
+    - python >=3.7
+    - ez_setup
     - pip
+    - wheel
   run:
-    - python
+    - python >=3.7
 
 test:
-  requires:
-    - pip
-  commands:
-    - pip check
   imports:
     - smmap
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/gitpython-developers/smmap
+  summary: A pure Python implementation of a sliding window memory map manager
+  doc_url: https://pythonhosted.org/smmap/
   license: BSD-3-Clause
   license_file: LICENSE
-  summary: A pure git implementation of a sliding window memory map manager.
+  dev_url: https://github.com/gitpython-developers/smmap
 
 extra:
-  recipe-maintainers:
-    - pelson
-    - ocefpaf
+   anaconda-services:
+    reason: Dependency for apache-airflow
+    recipe-maintainers:
+      - ianaobi
