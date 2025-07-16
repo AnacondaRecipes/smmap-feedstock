@@ -24,9 +24,11 @@ requirements:
 
 test:
   requires:
+    - python
     - pip
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
   imports:
     - smmap
 
