@@ -1,11 +1,12 @@
+{% set name = "smmap" %}
 {% set version = "5.0.2" %}
 
 package:
-  name: smmap
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/s/smmap/smmap-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 26ea65a03958fa0c8a1c7e8c7a58fdc77221b8910f6be2131affade476898ad5
 
 build:
