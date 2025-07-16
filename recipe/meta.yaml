@@ -23,12 +23,16 @@ requirements:
     - python
 
 test:
+  source_files:
+    - smmap/test
   requires:
     - python
     - pip
+    - pytest
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -vv smmap/test
   imports:
     - smmap
 
