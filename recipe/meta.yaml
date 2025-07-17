@@ -58,7 +58,7 @@ about:
     For performance critical 64 bit applications, a simplified version of memory mapping is provided
     which always maps the whole file, but still provides the benefit of unloading unused mappings on demand.
   dev_url: https://github.com/gitpython-developers/smmap
-  doc_url: https://github.com/gitpython-developers/smmap/blob/v5.0.2/doc/source/index.rst
+  doc_url: https://smmap.readthedocs.io
 
 extra:
   recipe-maintainers:
